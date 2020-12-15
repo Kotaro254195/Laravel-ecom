@@ -1,16 +1,35 @@
-# flutter_app
+##●Usage
+はじめに
+$ flutter pub get
+してください。もしエラーが出る場合はpubspec.yamlファイルの確認、もしくは
+$ flutter channel master
+でマスターに変更してからpub getしてみてください。
 
-A new Flutter application.
+##●構成について
 
-## Getting Started
+・main.dart
+・HomePage.dart
+・MapPage.dart
+・DetailsPage.dart
 
-This project is a starting point for a Flutter application.
+ 1.main.dart
+  ヘッダーとフッターがあり、フッターのボタン押下によってindex変数を変更、それに伴いBodyのWidget、ヘッダーの文字を変更させています。
+　また、APIへのデータのアクセス、取得はここで行っています。APIができ次第、コメントアウトしてある部分を書き換えようと思います。現在はデモデータを入れて動作確認しています。
 
-A few resources to get you started if this is your first Flutter project:
+ 2.HomePage.dart
+　お店の一覧を表示します。お店のデータはmain.dartから引数として取得しています。
+　リストのアイテムを押すとDetailsPage.dartに移ります。
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+ 3.MapPage.dart
+　お店の一覧を地図上で表示します。お店のデータはmain.dartから引数として取得しています。
+　マーカーをタップするとDetailsPage.dartに移ります。
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ 4.DetailsPage.dart
+　お店の詳細情報を表示します。お店のデータはHomePage.dart,MapPage.dartから引数として取得しています。
+
+##●備考
+・MapPage.dartでは現在地をgeolocaterで現在地座標を取得してそれをGoogleMapのinitialCameraPositionのtargetに代入しています。
+私が書いたコードだとgeolocaterでの現在地座標の取得がGoogleMapの表示より遅いためエラーが出るので、無理やりmain.dartのErrorWidgetで処理しています。(説明下手でごめんなさい)
+もし何かいい案があれば直してください...
+
+・コードが汚いのでどんどん変更していただければ幸いです。
