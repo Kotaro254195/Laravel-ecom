@@ -1,11 +1,17 @@
-##●Usage
+#omise_searchApp
+
+## ●Usage
 はじめに
+```
 $ flutter pub get
-してください。もしエラーが出る場合はpubspec.yamlファイルの確認、もしくは
+```
+してください。もしエラーが出る場合は```pubspec.yaml```ファイルの確認、もしくは
+```
 $ flutter channel master
+```
 でマスターに変更してからpub getしてみてください。
 
-##●構成について
+## ●主な構成
 
 ・main.dart
 ・HomePage.dart
@@ -27,7 +33,7 @@ $ flutter channel master
  4.DetailsPage.dart
 　お店の詳細情報を表示します。お店のデータはHomePage.dart,MapPage.dartから引数として取得しています。
 
-##●備考
+## ●備考
 ・MapPage.dartでは現在地をgeolocaterで現在地座標を取得してそれをGoogleMapのinitialCameraPositionのtargetに代入しています。
 私が書いたコードだとgeolocaterでの現在地座標の取得がGoogleMapの表示より遅いためエラーが出るので、無理やりmain.dartのErrorWidgetで処理しています。(説明下手でごめんなさい)
 もし何かいい案があれば直してください...
