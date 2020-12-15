@@ -11,7 +11,7 @@ $ flutter channel master
 ```
 でマスターに変更してからpub getしてみてください。
 
-## ●主な構成
+## ●画面構成
 ```
 ・main.dart
 ・HomePage.dart
