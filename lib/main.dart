@@ -66,7 +66,7 @@ class MainPageState extends State<MainPage> {
 
 
   int _selectedIndex = 0;
-  List<String> BarTitles = ["HOME", "MAP"];//ヘッダーの文字
+  List<String> barTitles = ["HOME", "MAP"];//ヘッダーの文字
 
   void _onItemTapped(int index) {
     setState(() {
@@ -93,7 +93,7 @@ class MainPageState extends State<MainPage> {
         body: [HomePage(shops: _shops,), MapPage(shops: _shops,)][_selectedIndex],
 
         appBar: AppBar(
-          title: Text(BarTitles[_selectedIndex]),
+          title: Text(barTitles[_selectedIndex]),
           backgroundColor: Colors.lightGreen,
           centerTitle: true,
           elevation: 0.0,
@@ -104,11 +104,11 @@ class MainPageState extends State<MainPage> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              title: Text('Home'),
+              label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.place),
-              title: Text('MAP'),
+              label: 'MAP',
             ),
           ],
           currentIndex: _selectedIndex,
