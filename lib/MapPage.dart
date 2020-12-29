@@ -19,8 +19,8 @@ class _MapPage extends State<MapPage>
   Completer<GoogleMapController> _controller = Completer();
   Set<Marker> _markers = {};
 
-  double position_lat; //緯度
-  double position_long;//経度
+  double positionLat; //緯度
+  double positionLong;//経度
 
   @override
   void initState() {
@@ -35,8 +35,8 @@ class _MapPage extends State<MapPage>
 
     setState(() {
       List<String>list=_currentPosition.toString().split(",");
-      position_lat = double.parse(list[0].substring(5));
-      position_long= double.parse(list[1].substring(6));
+      positionLat = double.parse(list[0].substring(5));
+      positionLong= double.parse(list[1].substring(6));
     });
   }
 
@@ -46,7 +46,7 @@ class _MapPage extends State<MapPage>
       body: GoogleMap(
         mapType: MapType.hybrid,
         initialCameraPosition: CameraPosition(
-          target: LatLng(position_lat, position_long),
+          target: LatLng(positionLat, positionLong),
           zoom: 14.4746,
         ),
 
