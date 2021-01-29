@@ -34,7 +34,7 @@ class _MapPage extends State<MapPage> {
 
     setState(() {
       currentLatLng =
-          LatLng(_currentPosition.latitude, _currentPosition.longitude)
+          LatLng(_currentPosition.latitude, _currentPosition.longitude);
     });
   }
 
@@ -54,17 +54,15 @@ class _MapPage extends State<MapPage> {
             widget.shops.forEach((shop) {
               _markers.add(Marker(
                 markerId:
-                MarkerId('shop_' + widget.shops.indexOf(shop).toString()),
+                    MarkerId('shop_' + widget.shops.indexOf(shop).toString()),
                 position: shop.latLng,
                 infoWindow: InfoWindow(title: shop.name),
                 onTap: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (cotext) =>
-                              DetailsPage(
-                                  shop: widget.shops[widget.shops.indexOf(
-                                      shop)])));
+                          builder: (context) => DetailsPage(
+                              shop: widget.shops[widget.shops.indexOf(shop)])));
                 },
               ));
             });

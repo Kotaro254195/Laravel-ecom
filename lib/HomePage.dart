@@ -25,7 +25,7 @@ class _HomePage extends State<HomePage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (cotext) =>
+                        builder: (context) =>
                             DetailsPage(shop: widget.shops[index])));
               },
               child: Padding(
