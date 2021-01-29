@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/DetailsPage.dart';
 
-import 'types/shop.dart';
+import 'types/Shop.dart';
 
 class HomePage extends StatefulWidget {
   final List<Shop> shops;

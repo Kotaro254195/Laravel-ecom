@@ -4,7 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_app/DetailsPage.dart';
 
-import 'types/shop.dart';
+import 'types/Shop.dart';
 
 class MapPage extends StatefulWidget {
   final List<Shop> shops;
@@ -57,7 +57,7 @@ class _MapPage extends State<MapPage> {
               _markers.add(Marker(
                 markerId:
                     MarkerId('shop_' + widget.shops.indexOf(shop).toString()),
-                position: LatLng(shop.coordinate[0], shop.coordinate[1]),
+                position: shop.latLng,
                 infoWindow: InfoWindow(title: shop.name),
                 onTap: () {
                   Navigator.push(
