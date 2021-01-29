@@ -19,8 +19,7 @@ class _MapPage extends State<MapPage> {
   Completer<GoogleMapController> _controller = Completer();
   Set<Marker> _markers = {};
 
-  double positionLat; //緯度
-  double positionLong; //経度
+  LatLng currentLatLng;
 
   @override
   void initState() {
@@ -34,9 +33,8 @@ class _MapPage extends State<MapPage> {
         desiredAccuracy: LocationAccuracy.high); // ここで精度を「high」に指定している
 
     setState(() {
-      List<String> list = _currentPosition.toString().split(",");
-      positionLat = double.parse(list[0].substring(5));
-      positionLong = double.parse(list[1].substring(6));
+      currentLatLng =
+          LatLng(_currentPosition.latitude, _currentPosition.longitude)
     });
   }
 
@@ -46,7 +44,7 @@ class _MapPage extends State<MapPage> {
       body: GoogleMap(
         mapType: MapType.hybrid,
         initialCameraPosition: CameraPosition(
-          target: LatLng(positionLat, positionLong),
+          target: currentLatLng,
           zoom: 14.4746,
         ),
         markers: _markers,
@@ -56,15 +54,17 @@ class _MapPage extends State<MapPage> {
             widget.shops.forEach((shop) {
               _markers.add(Marker(
                 markerId:
-                    MarkerId('shop_' + widget.shops.indexOf(shop).toString()),
+                MarkerId('shop_' + widget.shops.indexOf(shop).toString()),
                 position: shop.latLng,
                 infoWindow: InfoWindow(title: shop.name),
                 onTap: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (cotext) => DetailsPage(
-                              shop: widget.shops[widget.shops.indexOf(shop)])));
+                          builder: (cotext) =>
+                              DetailsPage(
+                                  shop: widget.shops[widget.shops.indexOf(
+                                      shop)])));
                 },
               ));
             });
