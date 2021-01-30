@@ -13,6 +13,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePage extends State<HomePage> {
   @override
+  void dispose() {
+    super.dispose();
+    print("dispose");
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(

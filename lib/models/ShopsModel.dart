@@ -3,18 +3,17 @@ import 'dart:async';
 import 'package:flutter_app/types/Shop.dart';
 
 class ShopsModel {
-  final StreamController<List<Shop>> _shopsController = StreamController();
+  final StreamController<List<Shop>> _shopsController =
+      StreamController<List<Shop>>.broadcast();
   final StreamController<Shop> _shopAppendingController = StreamController();
 
-  final List<Shop> _shops = [];
+  List<Shop> _shops = [];
 
-  ShopModel() {
+  ShopsModel({List<Shop> initValue = const []}) {
+    _shops = initValue;
+
     _shopAppendingController.stream.listen((shop) {
       _shops.add(shop);
-    });
-    _shopsController.stream.listen((shops) {
-      _shops.clear();
-      _shops.addAll(shops);
     });
   }
 
@@ -25,8 +24,8 @@ class ShopsModel {
 
   StreamSink<List<Shop>> get shopsUpdatingSink => _shopsController.sink;
 
-  void dispose() async {
-    await _shopsController.close();
-    await _shopAppendingController.close();
+  void dispose() {
+    _shopsController.close();
+    _shopAppendingController.close();
   }
 }
