@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'types/Shop.dart';
+import '../types/Shop.dart';
 
 class DetailsPage extends StatefulWidget {
   final Shop shop;

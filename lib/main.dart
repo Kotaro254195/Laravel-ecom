@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/MapPage.dart';
-import 'package:flutter_app/HomePage.dart';
+import 'package:flutter_app/models/MapModel.dart';
+import 'package:flutter_app/models/ShopModel.dart';
+import 'package:flutter_app/pages/HomePage.dart';
+import 'package:flutter_app/pages/MapPage.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'types/Shop.dart';
@@ -44,11 +47,44 @@ class MainPageState extends State<MainPage> {
 
   int _selectedIndex = 0;
   List<String> barTitles = ["HOME", "MAP"]; //ヘッダーの文字
+  final ShopsModel _shopsModel = ShopsModel();
+  final MapModel _mapModel = MapModel();
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // 初期値設定
+    _shopsModel.shopsUpdatingSink.add([
+      Shop(
+          name: 'マクドナルド',
+          evaluation: 4.4,
+          telephone: '01201234567',
+          latLng: LatLng(37.03146701139306, 140.89013741073236),
+          congestion: 50.1),
+      Shop(
+          name: 'ケンタッキー',
+          evaluation: 2,
+          telephone: '01209999999',
+          latLng: LatLng(37.032489787517584, 140.8893454202752),
+          congestion: 25.1),
+      Shop(
+          name: 'モスバーガー',
+          evaluation: 3.5,
+          telephone: '01209876543',
+          latLng: LatLng(37.032489787517777, 140.8893454202777),
+          congestion: 32.1)
+    ]);
+    // 現在地取得
+    Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+        .asStream()
+        .listen(_mapModel.positionSink.add);
   }
 
   @override
@@ -86,8 +122,9 @@ class MainPageState extends State<MainPage> {
           shops: _shops,
         ),
         MapPage(
-          shops: _shops,
-        )
+          mapModel: _mapModel,
+          shopsModel: _shopsModel,
+        ),
       ][_selectedIndex],
 
       appBar: AppBar(
