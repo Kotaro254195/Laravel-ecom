@@ -3,7 +3,6 @@ import 'package:flutter_app/components/ShopItem.dart';
 import 'package:flutter_app/models/AppModel.dart';
 import 'package:flutter_app/types/Shop.dart';
 import 'package:provider/provider.dart';
-import 'DetailsPage.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -13,6 +12,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         body: StreamBuilder<List<Shop>>(
       stream: appModel.shopsModel.shopsStream,
+      initialData: appModel.shopsModel.currentShops.toList(),
       builder: (context, shopsSnapshot) {
         return shopsSnapshot.hasData
             ? ListView.builder(

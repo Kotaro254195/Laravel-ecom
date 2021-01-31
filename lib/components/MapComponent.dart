@@ -25,34 +25,20 @@ class MapComponent extends StatelessWidget {
                     shop: shop,
                   )));
     };
-    final _addMarker = (Shop shop) {
-      _markers.add(Marker(
-        markerId: MarkerId('shop_${shop.hashCode.toString()}'),
-        position: shop.latLng,
-        infoWindow: InfoWindow(title: shop.name),
-        onTap: () {
-          _pushDetailPage(shop);
-        },
-      ));
-    };
 
-    return StreamBuilder<List<Shop>>(
-      stream: appModel.shopsModel.shopsStream,
-      builder: (context, shopsSnapshot) {
+    return StreamBuilder<Set<Marker>>(
+      stream: appModel.shopsModel.markersStream,
+      initialData: appModel.shopsModel.currentMarkers,
+      builder: (context, markersSnapshot) {
         return GoogleMap(
           mapType: MapType.hybrid,
           initialCameraPosition: CameraPosition(
             target: latLag,
             zoom: 14.4746,
           ),
-          markers: _markers,
+          markers: markersSnapshot.data,
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
-            if (shopsSnapshot.hasData) {
-              shopsSnapshot.data.forEach((shop) {
-                _addMarker(shop);
-              });
-            }
           },
           myLocationEnabled: true,
           myLocationButtonEnabled: true,
