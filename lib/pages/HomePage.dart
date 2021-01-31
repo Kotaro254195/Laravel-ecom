@@ -1,46 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/components/ShopItem.dart';
+import 'package:flutter_app/models/AppModel.dart';
 import 'package:flutter_app/types/Shop.dart';
+import 'package:provider/provider.dart';
 import 'DetailsPage.dart';
 
-class HomePage extends StatefulWidget {
-  final List<Shop> shops;
-
-  HomePage({this.shops});
-
-  @override
-  _HomePage createState() => _HomePage();
-}
-
-class _HomePage extends State<HomePage> {
-  @override
-  void dispose() {
-    super.dispose();
-    print("dispose");
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final appModel = Provider.of<AppModel>(context);
+
     return Scaffold(
-      body: ListView.builder(
-        itemCount: widget.shops.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: new InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            DetailsPage(shop: widget.shops[index])));
-              },
-              child: Padding(
-                child: Text(widget.shops[index].name),
-                padding: EdgeInsets.all(20.0),
-              ),
-            ),
-          );
-        },
-      ),
-    );
+        body: StreamBuilder<List<Shop>>(
+      stream: appModel.shopsModel.shopsStream,
+      builder: (context, shopsSnapshot) {
+        return shopsSnapshot.hasData
+            ? ListView.builder(
+                itemCount: shopsSnapshot.data.length,
+                itemBuilder: (context, index) {
+                  return ShopItem(
+                    shop: shopsSnapshot.data.elementAt(index),
+                  );
+                },
+              )
+            : Center(
+                child: Text("Loading..."),
+              );
+      },
+    ));
   }
 }

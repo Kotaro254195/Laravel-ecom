@@ -4,7 +4,6 @@ import 'package:flutter_app/models/MapModel.dart';
 import 'package:flutter_app/models/ShopsModel.dart';
 import 'package:flutter_app/pages/HomePage.dart';
 import 'package:flutter_app/pages/MapPage.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'types/Shop.dart';
@@ -59,28 +58,7 @@ class MainPageState extends State<MainPage> {
   //例外処理＝Google Map 読み込み中の処理
   Widget build(BuildContext context) {
     final List<Widget> _pageList = [
-      HomePage(
-        shops: [
-          Shop(
-              name: 'マクドナルド',
-              evaluation: 4.4,
-              telephone: '01201234567',
-              latLng: LatLng(37.03146701139306, 140.89013741073236),
-              congestion: 50.1),
-          Shop(
-              name: 'ケンタッキー',
-              evaluation: 2,
-              telephone: '01209999999',
-              latLng: LatLng(37.032489787517584, 140.8893454202752),
-              congestion: 25.1),
-          Shop(
-              name: 'モスバーガー',
-              evaluation: 3.5,
-              telephone: '01209876543',
-              latLng: LatLng(37.032489787517777, 140.8893454202777),
-              congestion: 32.1)
-        ],
-      ),
+      HomePage(),
       MapPage(),
     ];
 
