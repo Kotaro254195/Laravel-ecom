@@ -1,5 +1,6 @@
 import 'package:flutter_app/api/EndpointTypes.dart';
 
+// NOTE: ↓ 各自で切り替えてください
 final _BASE_URL = "http://192.168.20.92:8080";
 
 // ignore: non_constant_identifier_names

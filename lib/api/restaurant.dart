@@ -1,6 +1,6 @@
-import 'package:flutter_app/services/ApiInfoService.dart';
 import 'package:http/http.dart' as http;
 
+import 'ApiInfo.dart';
 import 'EndpointTypes.dart';
 
 Stream<http.Response> requestRestaurants() =>
