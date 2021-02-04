@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 Stream<List<Shop>> fetchRecommendationShops() {
   return requestRestaurants()
-      .map((request) => json.decode(request.body))
+      .map((request) => json.decode(utf8.decode(request.bodyBytes)))
       .cast<List>()
       .map((shopList) => shopList.map((shop) => Shop.formJson(shop)).toList());
 }
