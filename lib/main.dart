@@ -7,8 +7,6 @@ import 'package:flutter_app/pages/MapPage.dart';
 import 'package:flutter_app/services/ShopsService.dart';
 import 'package:provider/provider.dart';
 
-import 'types/Shop.dart';
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
