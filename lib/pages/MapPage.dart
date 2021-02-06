@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/components/MapComponent.dart';
+import 'package:flutter_app/components/map_component.dart';
 import 'package:flutter_app/models/AppModel.dart';
 import 'package:flutter_app/types/Shop.dart';
 import 'package:geolocator/geolocator.dart';

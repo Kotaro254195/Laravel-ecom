@@ -3,21 +3,25 @@ import 'package:flutter_app/pages/DetailsPage.dart';
 import 'package:flutter_app/types/Shop.dart';
 
 class ShopItem extends StatelessWidget {
-  final Shop shop;
+  const ShopItem({this.shop});
 
-  ShopItem({this.shop});
+  final Shop shop;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: new InkWell(
+      child: InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => DetailsPage(shop: shop)));
+          Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                  builder: (context) => DetailsPage(shop: shop)
+              )
+          );
         },
         child: Padding(
           child: Text(shop.name),
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20),
         ),
       ),
     );

@@ -7,24 +7,25 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class MapComponent extends StatelessWidget {
+  MapComponent({this.latLag});
+
   final LatLng latLag;
 
   final Completer<GoogleMapController> _controller = Completer();
   final Set<Marker> _markers = {};
 
-  MapComponent({this.latLag});
 
   @override
   Widget build(BuildContext context) {
     final appModel = Provider.of<AppModel>(context);
-    final _pushDetailPage = (Shop shop) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => DetailsPage(
-                    shop: shop,
-                  )));
-    };
+    // final _pushDetailPage = (Shop shop) {
+    //   Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //           builder: (context) => DetailsPage(
+    //                 shop: shop,
+    //               )));
+    // };
 
     return StreamBuilder<Set<Marker>>(
       stream: appModel.shopsModel.markersStream,
