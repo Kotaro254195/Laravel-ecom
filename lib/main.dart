@@ -23,7 +23,7 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
-  List<String> barTitles = ["HOME", "MAP"]; //ヘッダーの文字
+  List<String> barTitles = ['HOME', 'MAP']; //ヘッダーの文字
 
   void _onItemTapped(int index) {
     setState(() {
@@ -33,7 +33,7 @@ class MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _pageList = [
+    final _pageList = <Widget>[
       HomePage(),
       MapPage(),
     ];
@@ -55,7 +55,7 @@ class MainPageState extends State<MainPage> {
           title: Text(barTitles[_selectedIndex]),
           backgroundColor: Colors.lightGreen,
           centerTitle: true,
-          elevation: 0.0,
+          elevation: 0,
         ),
 
         //フッター
