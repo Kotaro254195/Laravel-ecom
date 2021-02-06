@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/map_component.dart';
-import 'package:flutter_app/models/AppModel.dart';
+import 'package:flutter_app/models/app_model.dart';
 import 'package:flutter_app/types/Shop.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

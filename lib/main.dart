@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/AppModel.dart';
-import 'package:flutter_app/models/MapModel.dart';
-import 'package:flutter_app/models/ShopsModel.dart';
+import 'package:flutter_app/models/app_model.dart';
+import 'package:flutter_app/models/map_model.dart';
+import 'package:flutter_app/models/shops_model.dart';
 import 'package:flutter_app/pages/HomePage.dart';
 import 'package:flutter_app/pages/MapPage.dart';
 import 'package:flutter_app/services/ShopsService.dart';
