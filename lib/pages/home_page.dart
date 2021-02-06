@@ -23,8 +23,8 @@ class HomePage extends StatelessWidget {
                   );
                 },
               )
-            : Center(
-                child: Text("Loading..."),
+            : const Center(
+                child: Text('Loading...'),
               );
       },
     ));

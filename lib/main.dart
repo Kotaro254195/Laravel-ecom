@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/app_model.dart';
 import 'package:flutter_app/models/map_model.dart';
 import 'package:flutter_app/models/shops_model.dart';
-import 'package:flutter_app/pages/HomePage.dart';
-import 'package:flutter_app/pages/MapPage.dart';
-import 'package:flutter_app/services/ShopsService.dart';
+import 'package:flutter_app/pages/home_page.dart';
+import 'package:flutter_app/pages/map_page.dart';
+import 'package:flutter_app/services/shops_service.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
