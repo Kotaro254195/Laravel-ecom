@@ -25,6 +25,5 @@ class ShopItem extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

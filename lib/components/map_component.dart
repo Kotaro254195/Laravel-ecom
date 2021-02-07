@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/app_model.dart';
-import 'package:flutter_app/pages/details_page.dart';
-import 'package:flutter_app/types/shop.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 

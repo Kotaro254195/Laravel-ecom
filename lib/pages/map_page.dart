@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/map_component.dart';
 import 'package:flutter_app/models/app_model.dart';
-import 'package:flutter_app/types/shop.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class MapPage extends StatelessWidget {
@@ -38,7 +36,7 @@ class MapPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: reloadCurrentLocation,
         tooltip: 'reload current location',
-        child: Icon(Icons.my_location),
+        child: const Icon(Icons.my_location),
       ),
     );
   }
