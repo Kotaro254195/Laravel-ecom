@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/shop_item.dart';
 import 'package:flutter_app/models/app_model.dart';
-import 'package:flutter_app/types/Shop.dart';
+import 'package:flutter_app/types/shop.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {

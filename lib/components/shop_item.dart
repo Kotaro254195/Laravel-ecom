@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/details_page.dart';
-import 'package:flutter_app/types/Shop.dart';
+import 'package:flutter_app/types/shop.dart';
 
 class ShopItem extends StatelessWidget {
   const ShopItem({this.shop});

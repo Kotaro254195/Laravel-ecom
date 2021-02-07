@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_app/api/restaurant.dart';
-import 'package:flutter_app/types/Shop.dart';
+import 'package:flutter_app/types/shop.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 Stream<List<Shop>> fetchRecommendationShops() {
