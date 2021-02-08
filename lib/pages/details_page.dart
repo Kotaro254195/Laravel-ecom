@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../types/Shop.dart';
+import '../types/shop.dart';
 
 class DetailsPage extends StatefulWidget {
-  final Shop shop;
+  const DetailsPage({this.shop});
 
-  DetailsPage({this.shop});
+  final Shop shop;
 
   @override
   _DetailsPage createState() => _DetailsPage();
@@ -16,7 +16,7 @@ class _DetailsPage extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("詳細"),
+        title: const Text('詳細'),
         backgroundColor: Colors.lightGreen,
         centerTitle: true,
       ),
@@ -24,9 +24,9 @@ class _DetailsPage extends State<DetailsPage> {
           child: Column(
         children: <Widget>[
           Text(widget.shop.name),
-          Text('評価：' + widget.shop.evaluation.toString()),
-          Text('電話番号：' + widget.shop.telephone),
-          Text('混雑度：' + widget.shop.congestion.toString()),
+          Text('評価：${widget.shop.evaluation.toString()}'),
+          Text('電話番号：${widget.shop.telephone}'),
+          Text('混雑度：${widget.shop.congestion.toString()}'),
         ],
       )),
     );

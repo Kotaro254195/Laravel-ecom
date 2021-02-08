@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/AppModel.dart';
-import 'package:flutter_app/models/MapModel.dart';
-import 'package:flutter_app/models/ShopsModel.dart';
-import 'package:flutter_app/pages/HomePage.dart';
-import 'package:flutter_app/pages/MapPage.dart';
-import 'package:flutter_app/services/ShopsService.dart';
+import 'package:flutter_app/models/app_model.dart';
+import 'package:flutter_app/models/map_model.dart';
+import 'package:flutter_app/models/shops_model.dart';
+import 'package:flutter_app/pages/home_page.dart';
+import 'package:flutter_app/pages/map_page.dart';
+import 'package:flutter_app/services/shops_service.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
@@ -23,7 +23,7 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
-  List<String> barTitles = ["HOME", "MAP"]; //ヘッダーの文字
+  List<String> barTitles = ['HOME', 'MAP']; //ヘッダーの文字
 
   void _onItemTapped(int index) {
     setState(() {
@@ -33,7 +33,7 @@ class MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _pageList = [
+    final _pageList = <Widget>[
       HomePage(),
       MapPage(),
     ];
@@ -44,8 +44,8 @@ class MainPageState extends State<MainPage> {
         final shopsModel = ShopsModel();
         // NOTE: サーバを起動しているなら↓
         fetchRecommendationShops().listen(shopsModel.shopsUpdatingSink.add);
-        // NOTE: 表示の確認のみで良いなら↓
-        // fetchTestRecommendationShops().listen(shopsModel.shopsUpdatingSink.add);
+        // NOTE: 表示ののみで良いなら↓
+        //fetchTestRecommendationShops().listen(shopsModel.shopsUpdatingSink.add);
         return AppModel(mapModel: mapModel, shopsModel: shopsModel);
       },
       dispose: (context, model) => model.dispose(),
@@ -55,7 +55,7 @@ class MainPageState extends State<MainPage> {
           title: Text(barTitles[_selectedIndex]),
           backgroundColor: Colors.lightGreen,
           centerTitle: true,
-          elevation: 0.0,
+          elevation: 0,
         ),
 
         //フッター

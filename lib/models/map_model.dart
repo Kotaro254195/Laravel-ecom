@@ -4,11 +4,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapModel {
-  final StreamController<LatLng> _currentLatLngController =
-      StreamController<LatLng>.broadcast();
-  final StreamController<Position> _positionController =
-      StreamController<Position>();
-
   MapModel() {
     _positionController.stream
         .map((position) => LatLng(position.latitude, position.longitude))
@@ -16,6 +11,13 @@ class MapModel {
       _currentLatLngController.sink.add(latLag);
     });
   }
+
+  final StreamController<LatLng> _currentLatLngController =
+      StreamController<LatLng>.broadcast();
+  final StreamController<Position> _positionController =
+      StreamController<Position>();
+
+
 
   StreamSink<LatLng> get latLngSink => _currentLatLngController.sink;
 
