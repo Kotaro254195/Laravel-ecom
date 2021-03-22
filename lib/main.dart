@@ -43,9 +43,9 @@ class MainPageState extends State<MainPage> {
         final mapModel = MapModel();
         final shopsModel = ShopsModel();
         // NOTE: サーバを起動しているなら↓
-        fetchRecommendationShops().listen(shopsModel.shopsUpdatingSink.add);
+        // fetchRecommendationShops().listen(shopsModel.shopsUpdatingSink.add);
         // NOTE: 表示ののみで良いなら↓
-        //fetchTestRecommendationShops().listen(shopsModel.shopsUpdatingSink.add);
+        fetchTestRecommendationShops().listen(shopsModel.shopsUpdatingSink.add);
         return AppModel(mapModel: mapModel, shopsModel: shopsModel);
       },
       dispose: (context, model) => model.dispose(),

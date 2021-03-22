@@ -32,7 +32,7 @@ Stream<List<Shop>> fetchTestRecommendationShops() {
           name: 'モスバーガー',
           evaluation: 3.5,
           telephone: '01209876543',
-          latLng: const LatLng(37.032489787517777, 140.8893454202777),
+          latLng: const LatLng(37.03146701139306, 140.8893454202752),
           congestion: 32.1)
     ]
   ]);
