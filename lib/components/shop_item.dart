@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/details_page.dart';
+import 'package:flutter_app/types/result.dart';
 import 'package:flutter_app/types/shop.dart';
 
 class ShopItem extends StatelessWidget {
@@ -15,9 +16,7 @@ class ShopItem extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute<void>(
-                  builder: (context) => DetailsPage(shop: shop)
-              )
-          );
+                  builder: (context) => DetailsPage(shop: shop)));
         },
         child: Padding(
           child: Text(shop.name),

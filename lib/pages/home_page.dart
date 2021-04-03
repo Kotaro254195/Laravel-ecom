@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/shop_item.dart';
 import 'package:flutter_app/models/app_model.dart';
-import 'package:flutter_app/types/shop.dart';
+import 'package:flutter_app/types/result.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,22 +10,23 @@ class HomePage extends StatelessWidget {
     final appModel = Provider.of<AppModel>(context);
 
     return Scaffold(
-        body: StreamBuilder<List<Shop>>(
+        body: StreamBuilder<List<Result>>(
       stream: appModel.shopsModel.shopsStream,
       initialData: appModel.shopsModel.currentShops.toList(),
       builder: (context, shopsSnapshot) {
-        return shopsSnapshot.hasData
-            ? ListView.builder(
-                itemCount: shopsSnapshot.data.length,
-                itemBuilder: (context, index) {
-                  return ShopItem(
-                    shop: shopsSnapshot.data.elementAt(index),
-                  );
-                },
-              )
-            : const Center(
-                child: Text('Loading...'),
-              );
+        // return shopsSnapshot.hasData
+        //     ? ListView.builder(
+        //         itemCount: shopsSnapshot.data.length,
+        //         itemBuilder: (context, index) {
+        //           return ShopItem(
+        //             shop: shopsSnapshot.data.elementAt(index),
+        //           );
+        //         },
+        //       )
+        //     : const Center(
+        //         child: Text('Loading...'),
+        //       );
+        return Text("HOGE");
       },
     ));
   }
