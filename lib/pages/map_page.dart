@@ -22,23 +22,17 @@ class MapPage extends StatelessWidget {
     reloadCurrentLocation();
 
     return Scaffold(
-      body: StreamBuilder<LatLng>(
-        stream: appModel.mapModel.latLngStream,
-        builder: (context, latLngSnapshot) {
-          return latLngSnapshot.hasData
-              ? MapComponent(
-                  latLag: latLngSnapshot.data,
-                )
-              : const Center(
-                  child: Text('Loading...'),
-                );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: reloadCurrentLocation,
-        tooltip: 'reload current location',
-        child: const Icon(Icons.my_location),
-      ),
-    );
+        body: StreamBuilder<LatLng>(
+      stream: appModel.mapModel.latLngStream,
+      builder: (context, latLngSnapshot) {
+        return latLngSnapshot.hasData
+            ? MapComponent(
+                latLag: latLngSnapshot.data,
+              )
+            : const Center(
+                child: Text('Loading...'),
+              );
+      },
+    ));
   }
 }

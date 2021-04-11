@@ -1,1 +1,1 @@
-enum EndpointTypes { FETCH_RESTAURANT }
+enum EndpointTypes { FETCH_RESTAURANT, FETCH_TWITTER }

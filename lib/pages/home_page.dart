@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/shop_item.dart';
 import 'package:flutter_app/models/app_model.dart';
-import 'package:flutter_app/types/shop.dart';
+import 'package:flutter_app/types/result.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         body: StreamBuilder<List<Shop>>(
       stream: appModel.shopsModel.shopsStream,
-      initialData: appModel.shopsModel.currentShops.toList(),
+      initialData: appModel.shopsModel.currentShops().toList(),
       builder: (context, shopsSnapshot) {
         return shopsSnapshot.hasData
             ? ListView.builder(
