@@ -29,6 +29,12 @@ $ flutter channel master
 <details>
 <summary>旧仕様</summary>
 
+### freezed_annotationの適応
+ターミナルで以下を適応
+```shell script
+ flutter pub run build_runner build --delete-conflicting-outputs
+```
+
 ## ● 画面構成
 
 ```
