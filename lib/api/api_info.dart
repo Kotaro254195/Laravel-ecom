@@ -1,7 +1,7 @@
 import 'package:flutter_app/api/endpoint_types.dart';
 
 // NOTE: ↓ 各自で切り替えてください
-const baseUrl = 'https://omisesearch.herokuapp.com';
+const baseUrl = 'http://18.180.249.168:8080';
 
 Map<EndpointTypes, String> get endPoints => {
       EndpointTypes.FETCH_RESTAURANT:

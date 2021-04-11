@@ -10,23 +10,22 @@ class HomePage extends StatelessWidget {
     final appModel = Provider.of<AppModel>(context);
 
     return Scaffold(
-        body: StreamBuilder<List<Result>>(
+        body: StreamBuilder<List<Shop>>(
       stream: appModel.shopsModel.shopsStream,
-      initialData: appModel.shopsModel.currentShops.toList(),
+      initialData: appModel.shopsModel.currentShops().toList(),
       builder: (context, shopsSnapshot) {
-        // return shopsSnapshot.hasData
-        //     ? ListView.builder(
-        //         itemCount: shopsSnapshot.data.length,
-        //         itemBuilder: (context, index) {
-        //           return ShopItem(
-        //             shop: shopsSnapshot.data.elementAt(index),
-        //           );
-        //         },
-        //       )
-        //     : const Center(
-        //         child: Text('Loading...'),
-        //       );
-        return Text("HOGE");
+        return shopsSnapshot.hasData
+            ? ListView.builder(
+                itemCount: shopsSnapshot.data.length,
+                itemBuilder: (context, index) {
+                  return ShopItem(
+                    shop: shopsSnapshot.data.elementAt(index),
+                  );
+                },
+              )
+            : const Center(
+                child: Text('Loading...'),
+              );
       },
     ));
   }

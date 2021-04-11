@@ -27,7 +27,17 @@ class ShopsModel {
 
   List<Result> _shops = [];
 
-  Set<Result> get currentShops => _shops.toSet();
+  Set<Shop> currentShops() {
+    final shopList = <Shop>[];
+    _shops.forEach((result) {
+      result.when(
+          shop: (dynamic s) {
+            shopList.add(s as Shop);
+          },
+          tweet: null);
+    });
+    return shopList.toSet();
+  }
 
   // Set<Marker> get currentMarkers => _shops
   //     .map((shop) => Marker(
@@ -37,7 +47,18 @@ class ShopsModel {
   //         ))
   //     .toSet();
 
-  Stream<List<Result>> get shopsStream => _shopsController.stream;
+  Stream<List<Shop>> get shopsStream =>
+      _shopsController.stream.map((resultList) {
+        final shopList = <Shop>[];
+        resultList.forEach((result) {
+          result.when(
+              shop: (dynamic s) {
+                shopList.add(s as Shop);
+              },
+              tweet: (dynamic s) {});
+        });
+        return shopList;
+      });
 
   Stream<Set<Marker>> get markersStream {
     return _shopsController.stream.asyncMap((shops) async {
