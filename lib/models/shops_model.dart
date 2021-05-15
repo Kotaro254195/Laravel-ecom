@@ -8,7 +8,7 @@ import 'package:flutter_app/types/shop.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rxdart/rxdart.dart';
 
-class ShopsModel {
+class ShopsModel{
   ShopsModel() {
     _shopAppendingController.stream.listen((shop) {
       _shops.add(shop);
@@ -26,6 +26,7 @@ class ShopsModel {
   final StreamController<Result> _shopAppendingController = StreamController();
 
   List<Result> _shops = [];
+  int selectedId;
 
   Set<Shop> currentShops() {
     final shopList = <Shop>[];
@@ -63,20 +64,26 @@ class ShopsModel {
   Stream<Set<Marker>> get markersStream {
     return _shopsController.stream.asyncMap((shops) async {
       final bitmap = await BitmapDescriptor.fromAssetImage(
-          const ImageConfiguration(), 'lib/assets/twitter_chat.png');
+          const ImageConfiguration(), 'lib/assets/twitter_bird.png');
       return shops.map((shop) {
-        return shop.when(shop: (dynamic s) {
-          final marker = Marker(
-              markerId: MarkerId(Random.secure().nextInt(100000000).toString()),
-              position: (s as Shop).latLng,
-              infoWindow: InfoWindow(title: (s as Shop).name));
-          return marker;
-        }, tweet: (dynamic t) {
-          return Marker(
-              markerId: MarkerId(Random.secure().nextInt(100000000).toString()),
-              position: (t as Tweet).latLng,
-              icon: bitmap);
-        });
+        return shop.when(
+            shop: (dynamic s) {
+              final marker = Marker(
+                  markerId: MarkerId(Random.secure().nextInt(100000000).toString()),
+                  position: (s as Shop).latLng,
+                  infoWindow: InfoWindow(title: (s as Shop).name),
+
+              );
+              return marker;
+            },
+            tweet: (dynamic t) {
+              return Marker(
+                  markerId: MarkerId(Random.secure().nextInt(100000000).toString()),
+                  position: (t as Tweet).latLng,
+                  icon: bitmap
+              );
+            }
+        );
       }).toSet();
     });
   }

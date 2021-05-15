@@ -34,8 +34,8 @@ class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     final _pageList = <Widget>[
-      HomePage(),
       MapPage(),
+
     ];
 
     return Provider<AppModel>(
@@ -52,27 +52,32 @@ class MainPageState extends State<MainPage> {
       child: Scaffold(
         body: _pageList.elementAt(_selectedIndex),
         appBar: AppBar(
-          title: Text(barTitles[_selectedIndex]),
           backgroundColor: Colors.lightGreen,
           centerTitle: true,
           elevation: 0,
+          actions: <Widget>[
+            IconButton(
+              icon:Icon(Icons.settings),
+
+            )
+          ],
         ),
 
         //フッター
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.place),
-              label: 'MAP',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-        ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   items: const <BottomNavigationBarItem>[
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.home),
+        //       label: 'Home',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.place),
+        //       label: 'MAP',
+        //     ),
+        //   ],
+        //   currentIndex: _selectedIndex,
+        //   onTap: _onItemTapped,
+        // ),
       ),
     );
   }

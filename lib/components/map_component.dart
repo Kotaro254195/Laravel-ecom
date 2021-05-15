@@ -35,3 +35,4 @@ class MapComponent extends StatelessWidget {
         });
   }
 }
+

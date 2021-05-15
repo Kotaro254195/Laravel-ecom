@@ -1,9 +1,19 @@
+
+
 import 'package:flutter_app/api/endpoint_types.dart';
+import 'package:geolocator/geolocator.dart';
 
 // NOTE: ↓ 各自で切り替えてください
 const baseUrl = 'http://18.180.249.168:8080';
 
-Map<EndpointTypes, String> get endPoints => {
+
+    Map<EndpointTypes, String> get endPoints => {
+
+      // EndpointTypes.FETCH_RESTAURANT:
+      // '$baseUrl/api/v1.0/restaurant?lat='+MapComponent.latLag_static.latitude.toString()+'&lng='+MapComponent.latLag_static.longitude.toString(),
+      // EndpointTypes.FETCH_TWITTER:
+      // '$baseUrl/api/v1.0/gettweet?lat='+MapComponent.latLag_static.latitude.toString()+'&lng='+MapComponent.latLag_static.longitude.toString()+'&area=5km'
+
       EndpointTypes.FETCH_RESTAURANT:
           '$baseUrl/api/v1.0/restaurant?lat=35.669220&lng=139.761457',
       EndpointTypes.FETCH_TWITTER:

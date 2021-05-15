@@ -161,8 +161,13 @@ class _$ShopResult<T> with DiagnosticableTreeMixin implements ShopResult<T> {
     @required TResult shop(T value),
     @required TResult tweet(T value),
   }) {
-    assert(shop != null);
-    assert(tweet != null);
+    try {
+      assert(shop != null);
+      assert(tweet != null);
+    }catch(e)
+    {
+      throw new StateError(e.toString());
+    }
     return shop(value);
   }
 

@@ -23,12 +23,12 @@ class MapPage extends StatelessWidget {
 
     return Scaffold(
         body: StreamBuilder<LatLng>(
-      stream: appModel.mapModel.latLngStream,
-      builder: (context, latLngSnapshot) {
-        return latLngSnapshot.hasData
-            ? MapComponent(
+          stream: appModel.mapModel.latLngStream,
+          builder: (context, latLngSnapshot) {
+            return latLngSnapshot.hasData
+             ? MapComponent(
                 latLag: latLngSnapshot.data,
-              )
+                )
             : const Center(
                 child: Text('Loading...'),
               );
